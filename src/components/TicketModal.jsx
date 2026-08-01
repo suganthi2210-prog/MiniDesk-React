@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import api from "../services/api";
 
 function TicketModal({ show, onClose, onSave, ticket }) {
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [file, setFile] = useState(null);
-
+    const apiBaseUrl = api.defaults.baseURL.replace("/api", "");
     useEffect(() => {
 
         if (ticket) {
@@ -92,7 +93,7 @@ function TicketModal({ show, onClose, onSave, ticket }) {
         <div className="mt-2">
             Current File:
             <a
-                href={`${import.meta.env.VITE_API_URL}${ticket.attachmentPath}`}
+                href={`${apiBaseUrl}${ticket.attachmentPath}`}
                 target="_blank"
                 rel="noreferrer"
                 className="ms-2"

@@ -234,7 +234,7 @@ const deleteTicket = async (id) => {
                                 <td>
                                     {ticket.attachmentPath ? (
                                     <a
-                                        href={`${api.defaults.baseURL.replace("/api", "")}${ticket.attachmentPath}`}
+                                        href={`${apiBaseUrl}${ticket.attachmentPath}`}
                                         target="_blank"
                                         rel="noreferrer"
                                     >
