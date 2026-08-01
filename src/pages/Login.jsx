@@ -10,9 +10,13 @@ const navigate = useNavigate();
 const handleLogin = async ()=>{
     try{
         const response = await api.post("Auth/login", {
-            username, password
+            username,
+            password
         });
+
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("username", username);
+
         navigate("/tickets");
     }
     catch(error){
