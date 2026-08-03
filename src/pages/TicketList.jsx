@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import TicketModal from "../components/TicketModal";
+import { clearAuthState } from "../services/auth";
 
 function TicketList() {
     const apiBaseUrl = api.defaults.baseURL.replace("/api", "");
@@ -121,12 +122,9 @@ const deleteTicket = async (id) => {
     }
 };
     const logout = () => {
-
-        localStorage.removeItem("token");
-        localStorage.removeItem("username");
-
+        // Clear the OAuth/JWT state before sending the user back to login.
+        clearAuthState();
         navigate("/");
-
     };
 
     return (
