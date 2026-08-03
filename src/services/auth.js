@@ -73,7 +73,7 @@ export async function finishOAuthLogin(callbackUrl) {
 
     // The browser sends the authorization code to the backend so the backend can
     // exchange it securely with the identity provider and return a JWT.
-    const response = await api.post("Auth/oauth/callback", {
+    const response = await api.post("/Auth/oauth/callback", {
         code,
         state,
         redirectUri,

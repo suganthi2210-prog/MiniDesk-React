@@ -1,9 +1,10 @@
 import axios from "axios";
 
 // The browser app talks to the backend base URL from the environment.
-// This can be an AWS EC2 public URL such as https://api.example.com/api.
+// Ensure the base URL ends with a slash so relative axios paths are resolved correctly.
+const apiBaseUrl = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "") + "/";
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || "/api"
+    baseURL: apiBaseUrl
 });
 
 // Attach the JWT to every normal API request, but skip auth headers for public OAuth endpoints.

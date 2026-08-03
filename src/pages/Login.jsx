@@ -14,7 +14,7 @@ function Login() {
         setIsBusy(true);
 
         try {
-            const response = await api.post("Auth/login", {
+const response = await api.post("/Auth/login", {
                 username,
                 password
             });
